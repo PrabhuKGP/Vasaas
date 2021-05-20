@@ -1,2 +1,2 @@
-Vasaas
-Fully functional website with Django
+Vasaas  
+Fully functional website with Django  
