@@ -1,4 +1,5 @@
 from django.urls import path
+from . import views
 from .views import (
     remove_from_cart,
     reduce_quantity_item,
@@ -20,7 +21,9 @@ urlpatterns = [
     path('payment/<payment_option>/', PaymentView.as_view(), name='payment'),
     path('add-to-cart/<pk>/', add_to_cart, name='add-to-cart'),
     path('remove-from-cart/<pk>/', remove_from_cart, name='remove-from-cart'),
-    path('reduce-quantity-item/<pk>/', reduce_quantity_item, name='reduce-quantity-item')
+    path('reduce-quantity-item/<pk>/', reduce_quantity_item, name='reduce-quantity-item'),
+    path('register', views.register_request, name="register"),
+    path('logout', views.logout_request, name="logout"),
 ]
 
 

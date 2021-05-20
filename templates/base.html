@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Djanggo Ecommerce</title>
+  <title>Shop</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
   <!-- Bootstrap core CSS -->
@@ -61,7 +61,7 @@
 
       <!-- Brand -->
       <a class="navbar-brand waves-effect" href="/">
-        <strong class="blue-text">DJANGO</strong>
+        <strong class="blue-text">VASAAS</strong>
       </a>
 
       <!-- Collapse -->
@@ -106,6 +106,9 @@
              </li class="nav-item">
                 <a class="nav-link waves-effect" href="{% url 'login' %}"> login</a>
             </li>
+              <li class="nav-item">
+                <a class="nav-link waves-effect" href="{% url 'core:register' %}">New User</a>
+              </li>
             {% endif %}
         </ul>
 
@@ -127,7 +130,7 @@
     {% block content %}
     {% endblock content %}
 
-    {% include "footer.html" %}
+  
 
 
     {% include "script.html" %}

@@ -7,6 +7,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, View
 from django.utils import timezone
 from .forms import CheckoutForm
+from .forms import CheckoutForm, NewUserForm
+from django.contrib.auth import login, logout, authenticate
 from .models import (
     Item,
     Order,
@@ -251,3 +253,24 @@ def reduce_quantity_item(request, pk):
         #add message doesnt have order
         messages.info(request, "You do not have an Order")
         return redirect("core:order-summary")
+
+#Register a new user
+def register_request(request):
+	if request.method == "POST":
+		form = NewUserForm(request.POST)
+		if form.is_valid():
+			user = form.save()
+			login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+			messages.success(request, "Registration successful." )
+			return redirect('/')
+		messages.error(request, "Unsuccessful registration. Invalid information.")
+	form = NewUserForm
+	return render (request=request, template_name="register.html", context={"register_form":form})
+
+
+#Login function
+@login_required
+def logout_request(req):
+    logout(req)
+    messages.info(req, "See you Soon!")
+    return redirect('/')
